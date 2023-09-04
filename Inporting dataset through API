@@ -1,0 +1,18 @@
+# installing the Kaggle library
+!pip install kaggle
+
+# configuring the path of Kaggle.json file
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+
+# API to fetch the dataset from Kaggle
+!kaggle competitions download -c LANL-Earthquake-Prediction
+
+# extracting the compessed Dataset
+from zipfile import ZipFile
+dataset = '/content/train.csv.zip'
+
+with ZipFile(dataset,'r') as zip:
+  zip.extractall()
+  print('The dataset is extracted')
